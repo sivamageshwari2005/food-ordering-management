@@ -492,7 +492,7 @@ onkeyup="searchFood()">
 
 <p>Fresh cheesy pizza with delicious toppings.</p>
 
-<div class="price">₹249</div>
+<div class="price">Rs:249</div>
 
 <button class="add-btn"
 onclick="addToCart('Cheese Pizza',249,'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80')">
@@ -518,7 +518,7 @@ Add to Cart
 
 <p>Juicy chicken burger with fresh vegetables.</p>
 
-<div class="price">₹179</div>
+<div class="price">Rs:179</div>
 
 <button class="add-btn"
 onclick="addToCart('Chicken Burger',179,'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80')">
@@ -532,30 +532,6 @@ Add to Cart
 </div>
 
 
-<!-- BIRYANI -->
-
-<div class="food-card" data-name="biryani">
-
-<img src="https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=600&q=80">
-
-<div class="food-info">
-
-<h3>Chicken Biryani</h3>
-
-<p>Hot and spicy traditional chicken biryani.</p>
-
-<div class="price">₹220</div>
-
-<button class="add-btn"
-onclick="addToCart('Chicken Biryani',220,'https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=600&q=80')">
-
-Add to Cart
-
-</button>
-
-</div>
-
-</div>
 
 
 <!-- PASTA -->
@@ -570,7 +546,7 @@ Add to Cart
 
 <p>Creamy Italian pasta with rich flavour.</p>
 
-<div class="price">₹199</div>
+<div class="price">Rs:199</div>
 
 <button class="add-btn"
 onclick="addToCart('Creamy Pasta',199,'https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&w=600&q=80')">
@@ -596,7 +572,7 @@ Add to Cart
 
 <p>Crispy golden french fries.</p>
 
-<div class="price">₹99</div>
+<div class="price">Rs:99</div>
 
 <button class="add-btn"
 onclick="addToCart('French Fries',99,'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80')">
@@ -622,7 +598,7 @@ Add to Cart
 
 <p>Crispy South Indian masala dosa.</p>
 
-<div class="price">₹90</div>
+<div class="price">Rs:90</div>
 
 <button class="add-btn"
 onclick="addToCart('Masala Dosa',90,'https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=600&q=80')">
@@ -648,10 +624,36 @@ Add to Cart
 
 <p>Hot and tasty vegetable noodles.</p>
 
-<div class="price">₹150</div>
+<div class="price">Rs:150</div>
 
 <button class="add-btn"
 onclick="addToCart('Veg Noodles',150,'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?auto=format&fit=crop&w=600&q=80')">
+
+Add to Cart
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- BIRYANI -->
+
+<div class="food-card" data-name="biryani">
+
+<img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=80">
+
+<div class="food-info">
+
+<h3>Chicken Biryani</h3>
+
+<p>Hot and spicy traditional chicken biryani.</p>
+
+<div class="price">Rs:220</div>
+
+<button class="add-btn"
+onclick="addToCart('Chicken Biryani',220,'https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=600&q=80')">
 
 Add to Cart
 
@@ -674,7 +676,7 @@ Add to Cart
 
 <p>Sweet and creamy vanilla ice cream.</p>
 
-<div class="price">₹120</div>
+<div class="price">Rs:120</div>
 
 <button class="add-btn"
 onclick="addToCart('Ice Cream',120,'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600&q=80')">
@@ -707,7 +709,7 @@ Your Cart
 <div class="cart-total">
 
 <h2>
-Total: ₹<span id="total">0</span>
+Total: Rs<span id="total">0</span>
 </h2>
 
 <button class="checkout-btn"
@@ -814,7 +816,7 @@ Place Order
 <h1>Order Placed Successfully!</h1>
 
 <p>
-Thank you, <b id="successName"></b> ❤️
+Thank you, <b id="successName"></b> 
 </p>
 
 <p>
@@ -885,7 +887,7 @@ quantity:1
 
 updateCart();
 
-alert(name+" added to cart! 🛒");
+alert(name+" added to cart!");
 
 }
 
@@ -907,7 +909,9 @@ count+=item.quantity;
 
 total+=item.price*item.quantity;
 
-
+function updateCartDisplay(){
+	let cartHTML="";
+	cart.forEach(item =>{
 cartItems.innerHTML+=`
 
 <div class="cart-item">
@@ -918,7 +922,7 @@ cartItems.innerHTML+=`
 
 <h3>${item.name}</h3>
 
-<p>₹${item.price}</p>
+<p>Rs${item.price}</p>
 
 <div class="quantity">
 
@@ -941,8 +945,11 @@ Remove
 </button>
 
 </div>
-
 `;
+
+});
+document.getElementById("cart-container").innerHTML = cartHTML;
+}
 
 });
 
@@ -1059,7 +1066,7 @@ function showOrder(){
 
 if(cart.length===0){
 
-alert("Please add food to cart first! 🍕");
+alert("Please add food to cart first! ");
 
 return;
 
